@@ -88,7 +88,7 @@ stages{
             
            script{
               def readPomVersion = readMavenPom file: 'pom.xml'
-               
+              def nexusRepo = readPomVersion.version.endswith("SNAPSHOT") ? "javacounterapp-snapshot" : "javacounterapp-release"
               nexusArtifactUploader artifacts: 
               [
                 [artifactId: 'springboot', 
@@ -102,7 +102,7 @@ stages{
                nexusUrl: '3.16.11.38:8081', 
                nexusVersion: 'nexus3', 
                protocol: 'http', 
-               repository: 'javacounterapp-release', 
+               repository: nexusRepo, 
                version: "${readPomVersion}"
               
                 }
