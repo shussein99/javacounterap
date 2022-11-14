@@ -87,6 +87,7 @@ stages{
         steps{
             
            script{
+              def readPomVersion = readMavenPom file: 'pom.xml'
                
               nexusArtifactUploader artifacts: 
               [
@@ -102,7 +103,7 @@ stages{
                nexusVersion: 'nexus3', 
                protocol: 'http', 
                repository: 'javacounterapp-release', 
-               version: '1.0.0'
+               version: "${readPomVersion}"
               
                 }
             
