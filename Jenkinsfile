@@ -109,6 +109,31 @@ stages{
             
              } 
         }       
-
+    stage('Docker Image build '){
+       
+        steps{
+            
+           script{
+               sh  'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
+               sh  'docker image tag $JOB_NAME:v1.$BUILD_ID shussein99/$JOB_NAME:v1.$BUILD_ID'
+               sh  'docker image tag $JOB_NAME:v1.$BUILD_ID shussein99/$JOB_NAME:latest'
+              
+                }
+            
+             } 
+        } 
+    stage('Docker Image build '){
+       
+        steps{
+            
+           script{
+                  withCredentials([string(credentialsId: 'Docker_login', variable: 'dockerpassword')]) {
+                  sh 'docker login -u shussein99 -p ${dockerpassword}'
+                  sh 'docker image push shussein99/$JOB_NAME:v1.$BUILD_ID'
+                  sh 'docker image push shussein99/$JOB_NAME:latest'
+                       }
+                }           
+             } 
+        }     
      }    
 }
