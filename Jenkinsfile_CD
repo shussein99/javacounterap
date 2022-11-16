@@ -1,0 +1,36 @@
+pipeline {
+  
+  agent any 
+
+  parameters{
+      
+      choice(name : 'action', choices: 'create\ndestroy', description: 'apply or delete on aws cluster')
+      string(name : 'cluster', choices: 'demo-cluster', description: 'choose EKS Cluster Name')
+      string(name : 'region', choices: 'us-east-2', description: 'choose AWS region of cluster')
+
+  }
+
+  environment{
+
+      ACCESS_KEY= credentials('AWS_ACCESSKEY_ID')
+      SECRET_KEY= credentials('AWS_SECRETKEY_ID')
+  }
+  
+  stages{
+    
+    stage('Git-Checkout'){
+        
+        steps{
+            
+           script{
+               
+               git branch: 'main', url: 'https://github.com/shussein99/javacounterap.git'
+               
+                }
+            
+             } 
+        
+        }
+     }
+
+}
