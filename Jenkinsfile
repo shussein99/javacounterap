@@ -122,7 +122,7 @@ stages{
             
              } 
         } 
-    stage('Docker Image build '){
+    stage('Docker Image Push '){
        
         steps{
             
