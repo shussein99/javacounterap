@@ -99,7 +99,7 @@ stages{
                ], 
                credentialsId: 'nexus_cred', 
                groupId: 'com.example', 
-               nexusUrl: '3.16.11.38:8081', 
+               nexusUrl: '3.22.236.17:8081', 
                nexusVersion: 'nexus3', 
                protocol: 'http', 
                repository: nexusRepo, 
