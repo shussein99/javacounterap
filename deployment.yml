@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name:  mydeployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: javacounterapp  
+  template:
+    metadata:
+      labels:
+        app:  javacounterapp
+    spec:
+      containers:
+      - image: shussein99/counter_app_cintegration:latest
+        name:  javacounterapp
+        restartPolicy: Always
+        imagePullPolicy: Always  
+        ports:
+        - containerPort:  9099
+         
+      

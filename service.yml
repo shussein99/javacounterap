@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  myservice
+  labels:
+    app: javacounterapp 
+spec:
+  selector:
+    app:  javacounterapp
+  type:  LoadBalancer 
+  ports:
+  - port:  8080
+    targetPort:  9099
+    nodePort: 31200
