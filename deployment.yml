@@ -15,7 +15,6 @@ spec:
       containers:
       - image: shussein99/counter_app_cintegration:latest
         name:  javacounterapp
-        restartPolicy: Always
         imagePullPolicy: Always  
         ports:
         - containerPort:  9099
